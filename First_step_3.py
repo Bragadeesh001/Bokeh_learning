@@ -30,3 +30,52 @@ def modify_legend():
     p.legend.background_fill_alpha = 0.2
     
     show(p)
+    
+
+
+### Customising Headlines ###
+
+def customize_headlines():
+    x=[1,2,3,4,5]
+    y=[6,7,5,3,2]
+
+    p=figure(title="Customisation Headlines")
+    p.vbar(x=x,top=y, legend_label='Bar', color='black', width=0.5, bottom=0)
+
+    # Change the headline location to left
+    p.title_location = "left"
+
+    # Change headline text
+    p.title.text = "Modified Headlines"
+
+    # Style the headlines
+    p.title.align = "center"
+    p.title.text_font = "times"
+    p.title.text_font_style = "italic"
+    p.title.text_color = "navy"
+    p.title.text_font_size = "25pt"
+    p.title.background_fill_color='black'
+    show(p)
+
+### Annotations ###
+## https://docs.bokeh.org/en/latest/docs/user_guide/basic/annotations.html#ug-basic-annotations ##
+
+def annotations():
+    from bokeh.models import BoxAnnotation
+
+    low_box = BoxAnnotation(top=3, fill_alpha=0.2, fill_color='black')
+    mid_box = BoxAnnotation(bottom=3, top=5.5, fill_alpha=0.2, fill_color='red')
+    high_box = BoxAnnotation(bottom=5.5, fill_alpha=0.2, fill_color='green')
+
+    x=[1,2,3,4,5]
+    y=[6,7,5,3,2]
+
+    p=figure(title="Annotations")
+    p.line(x,y, legend_label='annotation', line_color='navy', 
+           line_width=2)
+    
+    p.add_layout(low_box)
+    p.add_layout(mid_box)
+    p.add_layout(high_box)
+
+    show(p)
